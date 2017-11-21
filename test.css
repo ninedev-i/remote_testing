@@ -1,0 +1,103 @@
+body {
+	background-color: #FAFAFA;
+   padding: 8px;
+	font-size: 16px;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+label {
+   padding: 4px;
+   cursor: pointer;
+}
+label:hover {
+   background-color: #f2fcf2;
+}
+input[type="radio"] {
+   display: none;
+}
+input[type="radio"]:checked + label {
+   font-weight: bold;
+   color: #a9c728;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   -webkit-user-select: none;
+}
+input[type="radio"]:checked + label:hover {
+	background-color: inherit;
+}
+
+.progressBar {
+   width: 100%;
+   background-color: #EDEEEE;
+   position: relative;
+}
+.currentProgress {
+   width: 0%;
+   height: 20px;
+   background-color: #BCDA3E;
+   text-align: center;
+   line-height: 30px;
+   transition-property: width;
+   transition-duration: .4s;
+}
+.withShining {
+   box-shadow: 0px 0px 25px 0px #BAD943;
+   transition-property: box-shadow;
+   transition-delay: 0.2s;
+   transition-duration: .4s;
+}
+.progressText {
+   position: absolute;
+   width: 100%;
+   text-align: center;
+   top: 2px;
+}
+
+.question {
+	display: block;
+	background-color: #FFF;
+   margin-bottom: 10px;
+	border-radius: 3px;
+	padding: 15px;
+	border: 1px solid #EDEEEE;
+   opacity: 1;
+}
+.question h3 {
+   margin: 5px 0px;
+}
+.question ol {
+   margin-bottom: 0px;
+}
+.question ol li {
+   margin-bottom: 8px;
+}
+
+.nextQuestion {
+   width: 150px;
+   margin-top: 15px;
+   padding: 6px;
+   background-color: #ECEDED;
+   display: block;
+   text-align: center;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   -webkit-user-select: none;
+}
+.activeButton {
+   background-color: #BCDA3E;
+   cursor: pointer;
+}
+.hidden {
+   display: none;
+}
+
+.wrongAnswer input[type="radio"]:checked + label {
+   color: #F0433A;
+   cursor: default;
+}
+.wrongAnswer .nextQuestion {
+   display: none;
+}
+.wrongAnswer label:hover {
+   background-color: inherit;
+   cursor: default;
+}
