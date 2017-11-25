@@ -7,8 +7,17 @@ class dataJson {
    getJson() {
       var self = this;
       $.getJSON('questions.json', function(json) {
-         new Test(json);
-         self.data = json;
+         var
+            compareRandom = function(a, b) {
+               return Math.random() - 0.5;
+            },
+            newOrderArray = {
+               title: json[1].title,
+               issues: json[1].issues.sort(compareRandom)
+            };
+
+         new Test(newOrderArray);
+         self.data = newOrderArray;
       });
       return self.data;
    }
@@ -20,21 +29,17 @@ var data = new dataJson();
 class Test {
    constructor(data) {
       var
-         testNumber = 1,
-         currentTest = data[testNumber],
          titleContainer = document.querySelector('.testTitle'),
          progressText = document.querySelector('.progressText'),
          answersProgress = 3;
 
       this.data = data;
-      this.testNumber = testNumber;
-
       this.eventListeners.call(this);
 
-      progressText.innerText = `0 из ${this.data[this.testNumber].issues.length}`;
-      titleContainer.innerText = currentTest.title;
-      for (var i = 0; i < currentTest.issues.length; i++) {
-         this.renderQuestions(i, currentTest.issues[i].question, currentTest.issues[i].answers);
+      progressText.innerText = `0 из ${this.data.issues.length}`;
+      titleContainer.innerText = data.title;
+      for (var i = 0; i < data.issues.length; i++) {
+         this.renderQuestions(i, data.issues[i].question, data.issues[i].answers);
       }
    }
 
@@ -113,17 +118,17 @@ class Test {
             return checkbox[i].checked ? total + 1 : total;
          }, 0);
 
-      currentProgress.style.width = countAnswers/this.data[this.testNumber].issues.length*100 + '%';
-      progressText.innerText = `${countAnswers} из ${this.data[this.testNumber].issues.length}`;
+      currentProgress.style.width = countAnswers/this.data.issues.length*100 + '%';
+      progressText.innerText = `${countAnswers} из ${this.data.issues.length}`;
    }
 
    answerQuestion(currentNumber) {
       document.querySelector(`.question${+currentNumber}`).classList.add('hidden');
-      if (this.data[this.testNumber].issues.length != (+currentNumber + 1)) {
+      if (this.data.issues.length != (+currentNumber + 1)) {
          document.querySelector(`.question${+currentNumber+1}`).classList.remove('hidden');
       } else {
          document.querySelector('.progressBar').classList.add('withShining');
-         user.showResult(this.data[this.testNumber].issues);
+         user.showResult(this.data.issues);
       }
       this.renderCounter();
    }
