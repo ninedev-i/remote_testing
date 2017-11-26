@@ -5,15 +5,18 @@ class dataJson {
    }
 
    getJson() {
-      var self = this;
+      var
+         self = this;
+
       $.getJSON('questions.json', function(json) {
          var
+            testNumber = window.location.search ? window.location.search.slice(4) : 1,
             compareRandom = function(a, b) {
                return Math.random() - 0.5;
             },
             newOrderArray = {
-               title: json[1].title,
-               issues: json[1].issues.sort(compareRandom)
+               title: json[testNumber].title,
+               issues: json[testNumber].issues.sort(compareRandom)
             };
 
          new Test(newOrderArray);
