@@ -16,8 +16,7 @@ export default class User {
     * Отобразим результаты после последнего вопроса
     */
    showResult(data) {
-      let allAnswerVariants = document.querySelectorAll('.answerInput');
-      let allQuestions = document.querySelectorAll('.question');
+      const allAnswerVariants = document.querySelectorAll('.answerInput');
 
       for (let i = 0; i < allAnswerVariants.length; i++) {
          allAnswerVariants[i].setAttribute('disabled', 'disabled');

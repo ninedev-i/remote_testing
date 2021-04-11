@@ -3,7 +3,7 @@
 export default class ProgressBar {
    constructor(testLength) {
       this.testLength = testLength;
-      this.progressText = document.querySelector('.progressText'),
+      this.progressText = document.querySelector('.progressText');
       this.progressText.innerText = `0 из ${testLength}`;
    }
 

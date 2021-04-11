@@ -1,8 +1,14 @@
+:root {
+   --accented-color: #bcda3e;
+   --gray-color: #edeeee;
+   --error-color: #f0433a;
+}
+
 body {
-	background-color: #FAFAFA;
+   background-color: #fafafa;
    padding: 8px;
-	font-size: 16px;
-	font-family: 'Open Sans Condensed', sans-serif;
+   font-size: 16px;
+   font-family: 'Open Sans Condensed', sans-serif;
 }
 label {
    padding: 4px;
@@ -22,25 +28,25 @@ input[type="radio"]:checked + label {
    -webkit-user-select: none;
 }
 input[type="radio"]:checked + label:hover {
-	background-color: inherit;
+   background-color: inherit;
 }
 
 .progressBar {
    width: 100%;
-   background-color: #EDEEEE;
+   background-color: var(--gray-color);
    position: relative;
 }
 .currentProgress {
-   width: 0%;
+   width: 0;
    height: 20px;
-   background-color: #BCDA3E;
+   background-color:var(--accented-color);
    text-align: center;
    line-height: 30px;
    transition-property: width;
    transition-duration: .4s;
 }
 .withShining {
-   box-shadow: 0px 0px 25px 0px #BAD943;
+   box-shadow: 0 0 25px 0 #bad943;
    transition-property: box-shadow;
    transition-delay: 0.2s;
    transition-duration: .4s;
@@ -53,19 +59,19 @@ input[type="radio"]:checked + label:hover {
 }
 
 .question {
-	display: block;
-	background-color: #FFF;
+   display: block;
+   background-color: #fff;
    margin-bottom: 10px;
-	border-radius: 3px;
-	padding: 15px;
-	border: 1px solid #EDEEEE;
+   border-radius: 3px;
+   padding: 15px;
+   border: 1px solid ;
    opacity: 1;
 }
 .question h3 {
-   margin: 5px 0px;
+   margin: 5px 0;
 }
 .question ol {
-   margin-bottom: 0px;
+   margin-bottom: 0;
 }
 .question ol li {
    margin-bottom: 8px;
@@ -75,7 +81,7 @@ input[type="radio"]:checked + label:hover {
    width: 150px;
    margin-top: 15px;
    padding: 6px;
-   background-color: #ECEDED;
+   background-color: #eceded;
    display: block;
    text-align: center;
    -moz-user-select: none;
@@ -83,7 +89,7 @@ input[type="radio"]:checked + label:hover {
    -webkit-user-select: none;
 }
 .activeButton {
-   background-color: #BCDA3E;
+   background-color:var(--accented-color);
    cursor: pointer;
 }
 .hidden {
@@ -91,7 +97,7 @@ input[type="radio"]:checked + label:hover {
 }
 
 .wrongAnswer input[type="radio"]:checked + label {
-   color: #F0433A;
+   color: var(--error-color);
    cursor: default;
 }
 .wrongAnswer .nextQuestion {

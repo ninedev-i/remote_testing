@@ -8,8 +8,8 @@ class Test {
    constructor() {
       getJSON((data) => {
          this.data = data;
-         let issues = this.data.issues;
-         let titleContainer = document.querySelector('.testTitle');
+         const issues = this.data.issues;
+         const titleContainer = document.querySelector('.testTitle');
          this.progressBar = new ProgressBar(issues.length);
          titleContainer.innerText = this.data.title;
          for (let i = 0; i < issues.length; i++) {
@@ -27,7 +27,7 @@ class Test {
     */
    selectAnswer(e) {
       if (this.hasClass(e.target, 'answerInput')) {
-         let number = e.target.id.split('_')[1];
+         const number = e.target.id.split('_')[1];
          document.querySelector(`.thisQuestion${number}`).className += ' activeButton';
       }
    }
@@ -37,7 +37,7 @@ class Test {
     */
    goToNextQuestion(e) {
       if (this.hasClass(e.target, 'activeButton')) {
-         let answer = e.target.parentNode.querySelectorAll('input:checked')[0].id.slice(7).split('_');
+         const answer = e.target.parentNode.querySelectorAll('input:checked')[0].id.slice(7).split('_');
          this.answerQuestion(e.target.className.split(' ')[1].slice(12));
          this.user.addAnswer(answer[0], answer[1]);
       }
@@ -48,8 +48,8 @@ class Test {
     */
    answerQuestion(currentNumber) {
       document.querySelector(`.question${+currentNumber}`).className += ' hidden';
-      if (this.data.issues.length != (+currentNumber + 1)) {
-         let curQuestion = document.querySelector(`.question${+currentNumber+1}`);
+      if (this.data.issues.length !== (+currentNumber + 1)) {
+         const curQuestion = document.querySelector(`.question${+currentNumber+1}`);
          curQuestion.className = curQuestion.className.replace(' hidden', '');
       } else {
          this.progressBar.addShining();
@@ -62,11 +62,11 @@ class Test {
     * Нарисуем вопросы
     */
    renderQuestions(number, question, answers) {
-      let allQuestions = document.querySelector('.questions');
-      let questionContainer = document.createElement('div');
-      let acceptAnswer = document.createElement('div');
-      let ol = document.createElement('ol');
-      let questionTitleContainer = document.createElement('h3');
+      const allQuestions = document.querySelector('.questions');
+      const questionContainer = document.createElement('div');
+      const acceptAnswer = document.createElement('div');
+      const ol = document.createElement('ol');
+      const questionTitleContainer = document.createElement('h3');
 
       allQuestions.appendChild(questionContainer);
       questionContainer.className += `question question${number}`;
@@ -82,9 +82,9 @@ class Test {
       questionTitleContainer.innerText = `${number + 1}. ${question}`;
 
       for (let i = 0; i < answers.length; i++) {
-         let theQuestion = document.createElement('li');
-         let label = document.createElement('label');
-         let input = document.createElement('input');
+         const theQuestion = document.createElement('li');
+         const label = document.createElement('label');
+         const input = document.createElement('input');
 
          input.id = 'answer_' + number + '_' + i;
          input.className = 'answerInput';
@@ -98,7 +98,7 @@ class Test {
          theQuestion.className = 'answer';
          ol.appendChild(theQuestion);
 
-         if (i == answers.length - 1) {
+         if (i === answers.length - 1) {
             questionContainer.appendChild(acceptAnswer);
          }
       }
